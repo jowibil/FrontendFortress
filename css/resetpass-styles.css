@@ -1,0 +1,837 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #000000 0%, #632673 50%, #000000 100%);
+
+}
+
+
+
+@media only screen and (min-width: 320px) and (max-width: 374px) {
+    .bg{
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .password-reset-bg {
+        width: 300px;
+        height: 450px;
+        background: #210D26;
+        border-radius: 32px;
+    }
+
+    .title-bg {
+
+        width: 300px;
+        height: 107.42px;
+        background: #291D2C;
+        border-bottom: 1px solid #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 32px 32px 0px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .title-bg h3 {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 24px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+    .password-reset-bg h1 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 22px;
+        line-height: 31px;
+        color: #FFFFFF;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .password-reset-bg p {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin: 30px 0px 25px 10px;
+    }
+
+    #email-reset {
+        margin-left: 18px;
+        width: 265px;
+        height: 45px;
+        background: #632673;
+        border-radius: 10px;
+        color: white;
+    }
+
+    ::placeholder {
+        color: #FFFFFF;
+
+    }
+
+    input[type=email] {
+        padding-left: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+    }
+
+    .confirm-button {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+        height: 45px;
+        background: #FFFFFF;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+        margin-top: 25px;
+    }
+
+    .cancel-button {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+        width: 150px;
+        height: 40px;
+        background: #503E54;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF;
+    }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 375px) and (max-width: 424px){
+    .bg{
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .password-reset-bg {
+        width: 300px;
+        height: 450px;
+        background: #210D26;
+        border-radius: 32px;
+    }
+
+    .title-bg {
+
+        width: 300px;
+        height: 107.42px;
+        background: #291D2C;
+        border-bottom: 1px solid #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 32px 32px 0px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-bg h3 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 24px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    .password-reset-bg h1 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 22px;
+        line-height: 31px;
+        color: #FFFFFF;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .password-reset-bg p {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin: 25px 0px 20px 8px;
+    }
+
+    #email-reset {
+        margin-left: 15px;
+        width: 270px;
+        height: 48px;
+        background: #632673;
+        border-radius: 10px;
+        color: white;
+    }
+
+    ::placeholder {
+        color: #FFFFFF;
+
+    }
+    input[type=email] {
+        padding-left: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+    }
+
+    .confirm-button {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+        height: 45px;
+        background: #FFFFFF;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+        margin-top: 30px;
+    }
+
+    .cancel-button {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+        width: 150px;
+        height: 40px;
+        background: #503E54;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 425px) and (max-width: 599px ){
+    .bg{
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .password-reset-bg {
+        width: 380px;
+        height: 545px;
+        background: #210D26;
+        border-radius: 32px;
+    }
+
+    .title-bg {
+
+        width: 380px;
+        height: 107.42px;
+        background: #291D2C;
+        border-bottom: 1px solid #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 32px 32px 0px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-bg h3 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 24px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    .password-reset-bg h1 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 26px;
+        line-height: 31px;
+        color: #FFFFFF;
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .password-reset-bg p {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin: 30px 0px 20px 18px;
+    }
+
+    #email-reset {
+        margin-left: 25px;
+        width: 330px;
+        height: 53px;
+        background: #632673;
+        border-radius: 10px;
+        color: white;
+    }
+
+    ::placeholder {
+
+        color: #FFFFFF;
+
+    }
+    input[type=email] {
+        padding-left: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+    }
+
+    .confirm-button {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+        height: 55px;
+        background: #FFFFFF;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+        margin-top: 55px;
+    }
+
+    .cancel-button {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        width: 150px;
+        height: 55px;
+        background: #503E54;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px){
+    .bg{
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .password-reset-bg {
+        width: 595px;
+        height: 545px;
+        background: #210D26;
+        border-radius: 32px;
+    }
+
+    .title-bg {
+        width: 595px;
+        height: 107.42px;
+        background: #291D2C;
+        border-bottom: 1px solid #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 32px 32px 0px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-bg h3 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 25px;
+        line-height: 24px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    .password-reset-bg h1 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 28px;
+        line-height: 31px;
+        color: #FFFFFF;
+        text-align: left;
+        margin: 40px 0px 0px 30px;
+    }
+
+    .password-reset-bg p {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin: 40px 0px 15px 40px;
+    }
+
+    #email-reset {
+        margin: 15px 0px 0px 45px;
+        width: 515px;
+        height: 58px;
+        background: #632673;
+        border-radius: 10px;
+        color: white;
+    }
+
+    ::placeholder {
+        color: #FFFFFF;
+    }
+    input[type=email] {
+        padding-left: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+    }
+
+
+    .buttons{
+        display: flex;
+        justify-content: flex-end;
+        margin: 25px 15px 0px 15px;
+
+    }
+    .confirm-button{
+        order:1;
+        width: 150px;
+        height: 55px;
+        background: #FFFFFF;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 17px;
+        color: #000000;
+        margin-left: 15px;
+    }
+    .cancel-button{
+        width: 150px;
+        height: 55px;
+        background: #503E54;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 17px;
+        color: #FFFFFF;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 768px) and (max-width: 899px){
+    .bg{
+        margin-top: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .password-reset-bg {
+        width: 760px;
+        height: 540px;
+        background: #210D26;
+        border-radius: 32px;
+    }
+
+    .title-bg {
+        width: 760px;
+        height: 107.42px;
+        background: #291D2C;
+        border-bottom: 1px solid #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 32px 32px 0px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-bg h3 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 25px;
+        line-height: 24px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    .password-reset-bg h1 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 28px;
+        line-height: 31px;
+        color: #FFFFFF;
+        text-align: left;
+        margin: 40px 0px 0px 30px;
+    }
+
+    .password-reset-bg p {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin: 40px 0px 15px 40px;
+    }
+
+    #email-reset {
+        margin: 25px 0px 0px 55px;
+        width: 650px;
+        height: 58px;
+        background: #632673;
+        border-radius: 10px;
+        color: white;
+    }
+
+    ::placeholder {
+        color: #FFFFFF;
+    }
+    input[type=email] {
+        padding-left: 35px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+    }
+
+    .buttons{
+        display: flex;
+        justify-content: flex-end;
+        margin: 35px 20px 0px 0px;
+
+    }
+    .confirm-button{
+        order:1;
+        width: 150px;
+        height: 55px;
+        background: #FFFFFF;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 17px;
+        color: #000000;
+        margin-left: 15px;
+    }
+    .cancel-button{
+        width: 150px;
+        height: 55px;
+        background: #503E54;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 17px;
+        color: #FFFFFF;
+    }
+}
+@media only screen and (min-width: 900px) and (max-width: 1024px) {
+    .bg{
+        margin-top: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .password-reset-bg {
+        width: 895px;
+        height: 540px;
+        background: #210D26;
+        border-radius: 32px;
+        display: flexbox;
+    }
+    .title-bg {
+        width: 895px;
+        height: 107.42px;
+        background: #291D2C;
+        border-bottom: 1px solid #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 32px 32px 0px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-bg h3 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 25px;
+        line-height: 24px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+    .password-reset-bg h1 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 28px;
+        line-height: 31px;
+        color: #FFFFFF;
+        text-align: left;
+        margin: 40px 0px 0px 30px;
+    }
+    .password-reset-bg p {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin: 40px 0px 15px 40px;
+    }
+    #email-reset {
+        margin: 20px 0px 0px 55px;
+        width: 500px;
+        height: 58px;
+        background: #632673;
+        border-radius: 10px;
+        color: white;
+    }
+
+    ::placeholder {
+        color: #FFFFFF;
+    }
+    input[type=email] {
+        padding-left: 35px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+    }
+    .buttons{
+        float:right;
+        display: flex;
+        margin: 20px 15px 0px 0px;
+    }
+    .confirm-button{
+        order:1;
+        width: 150px;
+        height: 55px;
+        background: #FFFFFF;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 17px;
+        color: #000000;
+        margin-left: 5px;
+    }
+    .cancel-button{
+        width: 150px;
+        height: 55px;
+        background: #503E54;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 17px;
+        color: #FFFFFF;
+    }
+}
+@media only screen and (min-width: 1024px){
+    .bg{
+        margin-top: 210px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .password-reset-bg {
+        width: 1000px;
+        height: 430px;
+        background: #210D26;
+        border-radius: 32px;
+        display: flexbox;
+    }
+    .title-bg {
+        width: 1000px;
+        height: 107.42px;
+        background: #291D2C;
+        border-bottom: 1px solid #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 32px 32px 0px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-bg h3 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 25px;
+        line-height: 24px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+    .password-reset-bg h1 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 28px;
+        line-height: 31px;
+        color: #FFFFFF;
+        text-align: left;
+        margin: 40px 0px 0px 30px;
+    }
+    .password-reset-bg p {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin: 40px 0px 5px 85px;
+    }
+    #email-reset {
+        margin: 20px 0px 0px 55px;
+        width: 580px;
+        height: 58px;
+        background: #632673;
+        border-radius: 10px;
+        color: white;
+    }
+
+    ::placeholder {
+        color: #FFFFFF;
+    }
+    input[type=email] {
+        padding-left: 35px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+    }
+    .buttons{
+        float:right;
+        display: flex;
+        margin: 25px 15px 0px 0px;
+    }
+    .confirm-button{
+        order:1;
+        width: 150px;
+        height: 50px;
+        background: #FFFFFF;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 17px;
+        color: #000000;
+        margin-left: 5px;
+    }
+    .cancel-button{
+        width: 150px;
+        height: 50px;
+        background: #503E54;
+        border-radius: 32px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 17px;
+        color: #FFFFFF;
+    }
+}

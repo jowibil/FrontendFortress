@@ -1,0 +1,724 @@
+@media only screen and (max-width:  899px) {
+    body{
+        background: linear-gradient(180deg, #000000 0%, #632673 50%, #000000 100%);
+        background-repeat: no-repeat;
+    }
+    p{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+    a{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        text-decoration: none;
+        color:white;
+    }
+    .all{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+    }
+    .words{
+        display: none;
+    }
+    .word{
+        display: none;
+    }
+    .header{
+        font-size: 15px;
+        line-height: 18px;
+        text-align: center;
+        color: white;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .login{
+        width: 80%;
+        height: 620px;
+        background: #210D26;
+    }
+    .login-nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5%;
+        padding-top: 8px;
+        padding-bottom: 2px;
+        background: #291D2C;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-bottom: 1px solid white;
+    }
+    .login-nav p{
+        font-size: 15px;
+        color: #ffff;
+    }
+    #arrow{
+        width: 15px;
+        height: 13px;
+    }
+    .login1{
+        margin-right: 20%;
+        font-weight: 700;
+    }
+    .login3{
+        font-weight: bold;
+        border-bottom: 1px solid white;
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+    .nave{
+        border-bottom: 1px solid transparent;
+        padding-left: 16%;
+        padding-right: 16%;
+        transition: border-color 0.5s;
+    }
+    .nave:hover{
+        border-bottom-color: white;
+    }
+    .form{
+        padding-left: 48px;
+    }
+    input{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        width: 85%;
+        height: 40px;
+        background: #632673;
+        border-radius: 10px;
+        margin-top: 13px;
+    }
+    input::placeholder {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        color: white;
+        font-weight: bold;
+    }
+    input[type=email] {
+        padding: 10px 18px;
+        margin: 5px 0;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    input[type=text] {
+        padding: 10px 18px;
+        margin: 5px 0;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    input[type=password] {
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding-left: 25px;
+        font-size: 13px;
+    }
+    label{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        color: white;
+    }
+    .labels{
+        margin-top: 20px;
+    }
+    .input-top{
+        margin-top: 40px;
+    }
+    .buttom{
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+        margin-right: 50px;
+        margin-top: 30px;
+    }
+    .buttom-checkbox{
+        display: flex;
+        flex-direction: row;
+        padding-left: 30px;
+    }
+    .checkbox{
+        height: 20px;
+        width: 20px;
+    }
+    .remember{
+        margin-top: 9px;
+        margin-left: 8px;
+        color: white;
+    }
+    .remember span{
+        color: yellow;
+    }
+    .log_button{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        width: 45%;
+        height: 45px;
+        background: #FFFFFF;
+        border-radius: 40px;
+        margin-top: 40px;
+        margin-bottom: 15px;
+        font-size: 15px;
+        color: black;
+        font-weight: bold;
+    }
+    .bottom{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        gap: 150px;
+    }
+    .bots{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        text-align: center;
+        color: white;
+        font-size: 15px;
+    }
+    .bots a{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        text-decoration: none;
+        color: yellow;
+    }
+    .reset1{
+        display: none;
+    }
+    .register1{
+        display: none;
+    }
+    .popup {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #612670;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 10px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        z-index: 1000;
+        animation: show_slide 0.5s ease forwards;
+    }
+    
+    @keyframes show_slide {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    .popup p {
+        margin: 0;
+        padding: 0;
+        padding-right: 18px;
+    }
+    
+    .popup .close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+@media (min-width: 900px) and (max-width: 1661px) {
+    body{
+        background: linear-gradient(180deg, #000000 0%, #632673 50%, #000000 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center; 
+    }
+    p{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+    a{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        text-decoration: none;
+        color:white;
+    }
+    .all{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+    }
+    .words{
+        display: none;
+    }
+    .word{
+        display: none;
+    }
+    .header{
+        font-size: 15px;
+        line-height: 18px;
+        text-align: center;
+        color: white;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .login{
+        width: 50%;
+        height: 620px;
+        background: #210D26;
+    }
+    .login-nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5%;
+        padding-top: 8px;
+        padding-bottom: 2px;
+        background: #291D2C;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-bottom: 1px solid white;
+    }
+    .login-nav p{
+        font-size: 15px;
+        color: #ffff;
+    }
+    #arrow{
+        width: 15px;
+        height: 13px;
+    }
+    .login1{
+        margin-right: 20%;
+        font-weight: 700;
+    }
+    .login3{
+        font-weight: bold;
+        border-bottom: 1px solid white;
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+    .nave{
+        border-bottom: 1px solid transparent;
+        padding-left: 16%;
+        padding-right: 16%;
+        transition: border-color 0.5s;
+    }
+    .nave:hover{
+        border-bottom-color: white;
+    }
+    .form{
+        padding-left: 48px;
+    }
+    input{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        width: 85%;
+        height: 40px;
+        background: #632673;
+        border-radius: 10px;
+        margin-top: 13px;
+    }
+    input::placeholder {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        color: white;
+        font-weight: bold;
+    }
+    input[type=email] {
+        padding: 10px 18px;
+        margin: 5px 0;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    input[type=text] {
+        padding: 10px 18px;
+        margin: 5px 0;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    input[type=password] {
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding-left: 25px;
+        font-size: 13px;
+    }
+    label{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        color: white;
+    }
+    .labels{
+        margin-top: 20px;
+    }
+    .input-top{
+        margin-top: 40px;
+    }
+    .buttom{
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+        margin-right: 61px;
+        margin-top: 30px;
+    }
+    .buttom-checkbox{
+        display: flex;
+        flex-direction: row;
+        padding-left: 30px;
+    }
+    .checkbox{
+        height: 20px;
+        width: 20px;
+    }
+    .remember{
+        margin-top: 9px;
+        margin-left: 8px;
+        color: white;
+    }
+    .remember span{
+        color: yellow;
+    }
+    .log_button{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        width: 45%;
+        height: 45px;
+        background: #FFFFFF;
+        border-radius: 40px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 15px;
+        color: black;
+        font-weight: bold;
+    }
+    .bottom{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        gap: 150px;
+    }
+    .bots{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        text-align: center;
+        color: white;
+        font-size: 15px;
+    }
+    .bots a{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        text-decoration: none;
+        color: yellow;
+    }
+    .reset1{
+        display: none;
+    }
+    .register1{
+        display: none;
+    }
+    .popup {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #612670;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 10px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        z-index: 1000;
+        animation: show_slide 0.5s ease forwards;
+    }
+    
+    @keyframes show_slide {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    .popup p {
+        margin: 0;
+        padding: 0;
+        padding-right: 18px;
+    }
+    
+    .popup .close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+@media (min-width: 1662px) {
+    body {
+        background: linear-gradient(180deg, #000000 0%, #632673 50%, #000000 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center; 
+    }
+    p{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+    a{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        text-decoration: none;
+        color:white;
+    }
+    .logo{
+        display: none;
+    }
+    .header{
+        display: none;
+    }
+    .all{
+        height: 100vh;
+        width: 100wh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .login{
+        background: #210D26;
+        width: 43%;
+        height: 75%;
+    }
+    .words{
+        width: 43%;
+        height: 75%;
+        background-color: yellow;
+    }
+    .login-nav{
+        display: flex;
+        flex-direction: row;
+        gap: 7%;
+        padding-left: 40px;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid white;
+        background: #291D2C;
+    }
+    .login-nav p{
+        font-size: 20px;
+        color: white;
+    }
+    .arrow{
+        margin-top: 50px;
+    }
+    .login1{
+        font-weight: 800;
+    }
+    .login2{
+        padding-left: 30%;
+        margin-right: 4%;
+    }
+    .login3{
+        border-bottom: 1px solid white;
+        font-weight: 800;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .nave{
+        border-bottom: 1px solid transparent;
+        padding-left: 16%;
+        padding-right: 16%;
+        transition: border-color 0.5s;
+    }
+    .nave:hover{
+        border-bottom-color: white;
+    }
+    .forms{
+        padding-left: 7%;
+    }
+    label{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        color: white;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+    input{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        width: 87%;
+        height: 30px;
+        background: #632673;
+        border-radius: 10px;
+        margin-top: 13px;
+    }
+    .labels{
+        padding-top: 20px;
+    }
+    .input-top{
+        padding-top: 45px;
+    }
+    input::placeholder {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        color: white;
+        font-weight: bold;
+    }
+    input[type=email] {
+        padding: 10px 18px;
+        margin: 5px 0;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    input[type=text] {
+        padding: 10px 18px;
+        margin: 5px 0;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    input[type=password] {
+        padding: 10px 18px;
+        margin: 5px 0;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .checkbox{
+        height: 20px;
+        width: 20px;
+    }
+    .buttom-checkbox{
+        display: flex;
+        margin-left: 40px;
+        margin-top: 10px;
+    }
+    .remember{
+        color: white;
+        margin-left: 10px;
+        margin-top: 2px;
+    }
+    .remember p{
+        font-size: 16px;
+    }
+    .buttom{
+        margin-top: 40px;
+        margin-right: 65px;
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+        padding-bottom: 30px;
+    }
+    .log_button{
+        width: 230px;
+        height: 45px;
+        background: #FFFFFF;
+        border-radius: 15px;
+        margin-top: 50px;
+        color: black;
+        font-weight: 900;
+        font-size: 16px;
+    }
+    .reset{
+        display: none;
+    }
+    .register{
+        display: none;
+    }
+    .bottom{
+        display: flex;
+        justify-content: center;
+        gap: 20%;
+        padding-top: 10px;
+    }
+    p{
+        color: white;
+        font-size: 14px;
+    }
+    .bots a{
+        color: yellow;
+        text-decoration: none;
+    }
+    .words{
+        background: rgba(86, 86, 86, 0.1);
+        box-shadow: inset 100px 22px 102px rgba(132, 49, 155, 0.6), inset -100px -22px 102px rgba(99, 38, 115, 0.6);
+    }
+    .textt{
+        padding-right: 20%;
+        padding-left: 20%;
+    }
+    .textt p{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 30px;
+        text-align: center;
+    }
+    .popup {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #612670;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 10px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        z-index: 1000;
+        animation: show_slide 0.5s ease forwards;
+    }
+    
+    @keyframes show_slide {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    .popup p {
+        margin: 0;
+        padding: 0;
+        padding-right: 18px;
+    }
+    
+    .popup .close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    
+}
