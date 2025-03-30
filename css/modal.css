@@ -1,0 +1,595 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal-content {
+    display: grid;
+    grid-template-columns: minmax(360px, 30%) minmax(840px, 70%);
+    box-sizing: border-box;
+    width: 1200px;
+    height: 740px;
+    background: #210D26;
+    border: 2px solid #FFFFFF;
+    border-bottom: none;
+    padding: 20px;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+}
+
+#commentModalContent {
+    box-sizing: border-box;
+    position: relative;
+
+    height: 700px;
+
+    background: #210d26;
+    border-width: 4px 1px;
+    border-color: #ffffff #494949;
+    border-style: solid;
+
+    border-radius: 5px;
+}
+
+#commentTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px;
+    width: 90%;
+
+    background: #4949499c;
+    border-radius: 15px;
+
+    margin: 10px auto 0px auto;
+
+    font: 600 normal 22px 'Oxanium', sans-serif;
+}
+
+#comments-container {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 5px;
+    height: 620px;
+
+    margin: 3px 0px 3px 0px;
+
+    gap: 10px;
+
+    overflow: hidden scroll;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+}
+
+#commentbox {
+    text-align: left;
+    width: 345px;
+    height: fit-content;
+    overflow-wrap: break-word;
+
+    h1 {
+        font: 800 normal 25px 'Roboto', sans-serif;
+        padding: 8px 5px;
+    }
+
+    p {
+        font: 400 normal 16px 'Inter', sans-serif;
+        text-indent: 20px;
+        text-align: justify;
+        padding: 5px 8px;
+    }
+}
+
+#commentbox h1 {
+    font: 800 normal 25px 'Roboto', sans-serif;
+    padding: 8px 5px;
+}
+
+#commentbox p {
+    font: 400 normal 16px 'Inter', sans-serif;
+    text-indent: 20px;
+    text-align: justify;
+    padding: 5px 8px;
+}
+
+.rc-cont {
+    display: flex;
+}
+
+.rewlabel {
+    padding-top: 5px;
+    padding-left: 7px;
+}
+
+.heads {
+    font-family: 'Oxanium';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 31px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.titleinput {
+    background: #632673;
+    border-radius: 25px;
+    width: 615px;
+    height: 50px;
+    padding-left: 25px;
+}
+
+.DiscriptionForm {
+    background: #632673;
+    border-radius: 15px;
+    height: 318px;
+    width: 684px;
+}
+
+.PostBottom {
+    display: flex;
+    justify-content: center;
+}
+
+.LeftBottom {
+    padding-right: 55px;
+}
+
+.CardDiscription {
+    background: #632673;
+    border-radius: 15px;
+    height: 110px;
+    width: 350px;
+}
+
+.selectdif {
+    height: 38px;
+    width: 240px;
+    border-radius: 6px;
+    color: #000000;
+    text-align: center;
+}
+
+option {
+    color: #000000;
+}
+
+.RightBottom {
+    margin-top: 20px;
+}
+
+.rewlabel {
+    font-family: 'Oxanium';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 31px;
+    text-transform: uppercase;
+}
+
+.modfoot {
+    margin-top: 10px;
+}
+
+.postbutton {
+    background: #F8E559;
+    font: normal 600 1.2rem 'Roboto Condensed', sans-serif;
+    width: 120px;
+    height: 55px;
+    border-radius: 15px;
+    color: black;
+    margin-left: 10px;
+}
+
+.closebutton {
+    background: #000000;
+    font: normal 400 1.2rem 'Roboto Condensed', sans-serif;
+    width: 120px;
+    height: 55px;
+    border-radius: 15px;
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+
+textarea {
+    padding: 10px;
+}
+
+#modal-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+    width: 500px;
+    height: 85px;
+
+    border-radius: 32px;
+    background: blueviolet;
+
+    font: normal 800 1.5rem "Michroma", sans-serif;
+    color: #ffffff;
+}
+
+
+.description-container {
+    display: flex;
+    justify-content: center;
+}
+
+.commissioner-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    margin: 70px 10px 0px 0px;
+
+    img {
+        width: 80px;
+        height: 80px;
+    }
+
+}
+
+.quest-details {
+    text-align: left;
+    font: normal 800 1.5rem 'Oxanium', sans-serif;
+    color: #FFFFFF;
+    margin-top: 15px;
+
+    #quest-desc-text {
+        width: 1000px;
+        height: 400px;
+        background: rgba(132, 49, 155, 0.43);
+        border-radius: 20px;
+
+        text-indent: 15px;
+        padding: 20px;
+        font-size: 1.1rem;
+        text-align: justify;
+        font-family: 'Inter';
+        font: normal 500 1rem/30px 'Inter';
+        color: #FFFFFF;
+
+
+    }
+}
+
+
+.player-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 20px 0px 60px;
+
+    img {
+        width: 80px;
+        height: 80px;
+    }
+
+}
+
+#back-btn {
+    background: #000000;
+    font: normal 600 1.2rem 'Roboto Condensed', sans-serif;
+    width: 120px;
+    height: 45px;
+    border-radius: 15px;
+    color: #FFFFFF;
+}
+
+#accept-btn {
+    background: #F8E559;
+    font: normal 600 1.2rem 'Roboto Condensed', sans-serif;
+    width: 120px;
+    height: 45px;
+    border-radius: 15px;
+    color: black;
+}
+
+.quest_title {
+    display: grid;
+    grid-template-columns: minmax(210px, 25%) minmax(630px, 75%);
+    align-items: center;
+}
+
+.description-container {
+    display: flex;
+    justify-content: center;
+}
+
+.disc_box {
+    text-align: right;
+    font: normal 800 1.2rem "Oxanium", sans-serif;
+    color: #ffffff;
+
+    #modal-description {
+        width: 700px;
+        height: 400px;
+
+        background: rgba(132, 49, 155, 0.43);
+        border-radius: 20px;
+
+        text-indent: 15px;
+        padding: 20px;
+        text-align: justify;
+
+        font: normal 500 1rem/30px "Inter", sans-serif;
+        color: #ffffff;
+
+        overflow-y: scroll;
+        scrollbar-width: none;
+
+    }
+}
+
+#bottomSection {
+    display: grid;
+    grid-template-columns: minmax(546px, 65%) minmax(294px, 35%);
+
+    h1 {
+        font: normal 600 26px "Oxanium", sans-serif;
+        text-align: left;
+
+        margin: 10px 0px 0px 75px;
+    }
+}
+
+#leftsectioncontent {
+    position: relative;
+    display: inline-block;
+    width: 420px;
+}
+
+#leftsectioncontent .send-icon {
+    position: absolute;
+    right: 0px;
+    top: 55%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+#leftsectioncontent .send-icon:hover {
+    color: #00ff00;
+}
+
+#user-comment {
+    display: flex;
+    justify-self: left;
+
+    width: 100%;
+    height: 45px;
+
+    resize: none;
+    padding: 10px;
+    padding-right: 25px;
+
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    overflow: hidden scroll;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+
+    border-radius: 15px;
+    background: white;
+
+    font: 500 normal 16px 'Oxanium', sans-serif;
+    color: black;
+
+    margin: 10px 0px 0px 10px;
+
+}
+
+::placeholder {
+    color: rgb(65, 64, 64);
+    font: 400 normal 16px 'Oxanium', sans-serif;
+}
+
+#rightsection {
+    display: flex;
+    width: fit-content;
+
+    margin-top: 45px;
+
+}
+
+.quest-pay {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    margin: 0px 30px 10px 0px;
+}
+
+.PriceAmount {
+    font: normal 600 1rem "Oxanium", sans-serif;
+}
+
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        margin-top: 10px;
+        width: 80px;
+        height: 80px;
+    }
+}
+
+
+
+
+/* General Modal Styles */
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Content Box */
+.custom-modal-content {
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin: 10% auto;
+    padding: 50px 50px 50px 50px;
+    width: 50%;
+    max-width: 600px;
+    position: relative;
+}
+
+
+/* Close Button */
+.custom-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Form Styles */
+.custom-modal-content .form-group {
+    margin-bottom: 15px;
+    margin-top: 40px;
+    display: flex;
+    gap: 10px;
+}
+
+.rep-1 {
+    font: normal 600 28px 'Roboto Condensed', sans-serif;
+    margin-bottom: 7px;
+}
+
+.rep-2 {
+    font: normal 400 15px 'Roboto Condensed', sans-serif;
+}
+
+.type {
+    font: normal 400 17px 'Roboto Condensed', sans-serif;
+}
+
+.custom-modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.custom-modal-content select,
+.custom-modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
+.custom-submit-btn {
+    background-color: #F8E559;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font: normal 600 17px 'Roboto', sans-serif;
+}
+
+.custom-submit-btn:hover {
+    background-color: #cfc049;
+}
+
+.report-input {
+    width: 250px;
+    color: #000000;
+    padding: 5px;
+    font: normal 400 15px 'Roboto Condensed', sans-serif;
+}
+
+.details-area {
+    margin-top: 40px;
+}
+
+.detai {
+    color: black;
+    margin-bottom: 30px;
+}
+
+.details-label {
+    font: normal 200 17px 'Roboto Condensed', sans-serif;
+}
+
+.image-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.image-button .button-image {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Animation (Optional) */
+.custom-modal-content {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#post-modal input::placeholder,
+#post-modal textarea::placeholder {
+    color: white;
+    /* Replace with your desired color */
+}
