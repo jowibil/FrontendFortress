@@ -2,6 +2,15 @@
 session_start();
 include 'database.php'; // Ensure this file contains your database connection and initializes $pdo
 
+// Function to initialize quest slots for a new user
+function initializeQuestSlots($user_id, $pdo) {
+    for ($i = 1; $i <= 4; $i++) {
+        $status = ($i == 1) ? 'available' : 'locked'; // First slot available, others locked
+        $stmt = $pdo->prepare("INSERT INTO quest_slots (user_id, slot_number, status) VALUES (?, ?, ?)");
+        $stmt->execute([$user_id, $i, $status]);
+    }
+}
+
 // Redirect logged-in users to the homepage
 if (isset($_SESSION['user_id'])) {
     header("Location: dashboard.php");
@@ -10,7 +19,7 @@ if (isset($_SESSION['user_id'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']); // Sanitize email input
-    $username = trim($_POST['username']); // Sanitize username input
+    $name = trim($_POST['name']); // Sanitize name input
     $password = trim($_POST['password']); // Sanitize password input
     $confirm_password = trim($_POST['confirm_password']); // Sanitize confirm password input
     $terms = isset($_POST['terms']); // Check if terms checkbox is checked
@@ -23,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Ensure all fields are filled
-    if (empty($email) || empty($username) || empty($password) || empty($confirm_password)) {
+    if (empty($email) || empty($name) || empty($password) || empty($confirm_password)) {
         $_SESSION['error'] = "All fields are required.";
         header("Location: signup.php");
         exit();
@@ -57,12 +66,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Insert new user
-        $stmt = $pdo->prepare("INSERT INTO users (email, username, password, created_at) VALUES (?, ?, ?, NOW())");
-        $stmt->execute([$email, $username, $hashed_password]);
+        $stmt = $pdo->prepare("INSERT INTO users (email, name, password, created_at) VALUES (?, ?, ?, NOW())");
+        $stmt->execute([$email, $name, $hashed_password]);
+
+        // Get the last inserted user ID
+        $user_id = $pdo->lastInsertId();
+
+        // Initialize quest slots for the new user
+        initializeQuestSlots($user_id, $pdo);
 
         // Store user session data and redirect
-        $_SESSION['user_id'] = $pdo->lastInsertId();
-        $_SESSION['username'] = $username;
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['name'] = $name;
         $_SESSION['success'] = "Signup successful!";
         header("Location: Login.php");
         exit();
@@ -168,8 +183,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="email" name="email" placeholder="Email" required><br>
                     </div>
                     <div class="labels">
-                    <label for="username">Enter your Username</label>
-                    <input type="text" name="username" placeholder="Username" required><br>
+                    <label for="name">Enter your name</label>
+                    <input type="text" name="name" placeholder="name" required><br>
                     </div>
                     <div class="labels">
                     <label for="password">Enter your Password</label><br>
