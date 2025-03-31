@@ -70,7 +70,7 @@ try {
         <p><strong>Gold:</strong> <?php echo $user['gold']; ?></p>
         
         <a href="logout.php" class="btn btn-danger">Logout</a>
-        <a href="shop.php" class="btn btn-warning ms-3">Go to Shop</a>
+        <a href="shope.php" class="btn btn-warning ms-3">Go to Shop</a>
         <button class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#postQuestModal">Post a Quest</button>
 
         <hr>
