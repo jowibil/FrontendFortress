@@ -1,0 +1,123 @@
+#bodyContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: -150px 0px 0px 150px;
+}
+
+#convertContainer {
+    position: relative;
+    width: 400px;
+    height: 403px;
+    background: #291D2C;
+    border-radius: 30px;
+    text-align: center;
+
+    h3 {
+        font: normal 600 2.5rem/62px 'Oxanium', sans-serif;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        margin: 40px 0px 0px 0px;
+    }
+
+    #RewardCoinsCointainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0px 30px 0px;
+
+        #rewardcoinsAmount {
+            width: 300px;
+            height: 65px;
+            background: #1E1E1E;
+            border: 1px solid #FFFFFF;
+            border-radius: 20px;
+            margin-left: 10px;
+            padding-left: 5px;
+        }
+    }
+
+    #GoldCoinsContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        #goldcoinsAmount {
+            width: 300px;
+            height: 65px;
+            background: #1E1E1E;
+            border: 1px solid #FFFFFF;
+            border-radius: 20px;
+            margin-left: 10px;
+            padding-left: 5px;
+        }
+    }
+
+    #conversionbuttonscontainer {
+        position: absolute;
+        right: 52px;
+        bottom: 25px;
+
+        #resetconversion {
+            width: 120px;
+            height: 58px;
+            background: rgba(255, 0, 0, 0.75);
+            border-radius: 68px;
+            font: normal 800 1rem 'Roboto Condensed', sans-serif;
+            color: #ffffff;
+        }
+
+        #convertbutton {
+            width: 150px;
+            height: 58px;
+            background: #F8E559;
+            border-radius: 68px;
+            font: normal 800 1rem 'Roboto Condensed', sans-serif;
+            color: #000000;
+        }
+    }
+}
+
+#cashoutContainer {
+    position: relative;
+    width: 400px;
+    height: 540px;
+    background: #291D2C;
+    border-radius: 30px;
+    text-align: center;
+
+    h3 {
+        text-align: center;
+        font: normal 600 2.5rem/62px 'Oxanium', sans-serif;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        margin: 50px 0px 0px 0px;
+    }
+
+    #cashoutparagraph {
+        text-indent: 20px;
+        text-align: left;
+        font: normal 300 1rem 'Oxanium', sans-serif;
+
+    }
+
+    #cashoutamountcontainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0px 0px 0px;
+
+        #cashoutamount {
+            width: 300px;
+            height: 65px;
+            background: #1E1E1E;
+            border: 1px solid #FFFFFF;
+            border-radius: 20px;
+            margin-left: 10px;
+            padding-left: 5px;
+            margin-bottom: 20px;
+        }
+    }
+}

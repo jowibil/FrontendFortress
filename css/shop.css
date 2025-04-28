@@ -1,0 +1,330 @@
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 160px auto 50px auto;
+
+  #reward-coins {
+    margin: 0px 50px 0px 10px;
+    font: normal 600 2rem 'Oxanium', sans-serif;
+  }
+
+  #gold-coins {
+    margin: 0px 50px px 10px;
+    font: normal 600 2rem 'Oxanium', sans-serif;
+  }
+}
+
+#shopContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+
+}
+
+.convertervalue {
+  font: normal 600 1rem 'Oxanium', sans-serif;
+}
+
+.ConverterPic {
+  margin-right: 10px;
+}
+
+#itemContainer_1 {
+  width: 350px;
+  height: 443px;
+  background: #291D2C;
+  border-radius: 30px;
+  position: relative;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+
+  h1 {
+    font: 600 normal 1.8em 'Oxanium', sans-serif;
+    margin: -33px 0px 0px 0px;
+  }
+
+  #item-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 18px auto 0px auto;
+    width: 240px;
+    height: 250px;
+    background: #1E1E1E;
+    border: 1px solid #FFFFFF;
+    border-radius: 67px;
+
+    img {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  .item-price {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    #price {
+      font: normal 700 1rem 'Oxanium', sans-serif;
+    }
+
+  }
+
+  #buyButton {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    width: 120px;
+    height: 50px;
+    background: #F8E559;
+    border-radius: 20px;
+    font: normal 700 1rem 'Roboto Condensed', sans-serif;
+    color: black;
+
+  }
+
+}
+
+#itemContainer_2 {
+  width: 350px;
+  height: 443px;
+  background: #291D2C;
+  border-radius: 30px;
+  position: relative;
+  margin: 0px 0px 0px 10px;
+  text-align: center;
+
+  h1 {
+    font: 600 normal 1.8em 'Oxanium', sans-serif;
+    margin: -18px 0px 0px 0px;
+  }
+
+  #item-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto 0px auto;
+    width: 240px;
+    height: 250px;
+    background: #1E1E1E;
+    border: 1px solid #FFFFFF;
+    border-radius: 67px;
+
+    img {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  .item-price {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    #price {
+      font: normal 700 1rem 'Oxanium', sans-serif;
+    }
+
+  }
+
+  #buyButton {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    width: 120px;
+    height: 50px;
+    background: #F8E559;
+    border-radius: 20px;
+    font: normal 700 1rem 'Roboto Condensed', sans-serif;
+    color: black;
+
+  }
+
+}
+
+#prompt,
+#errorprompt {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+
+}
+
+#promptContent,
+#errorpromptContent {
+  box-sizing: border-box;
+  width: 400px;
+  height: 100px;
+  background: #210D26;
+  border: 2px solid #FFFFFF;
+  border-radius: 20px;
+  padding: 20px;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+
+  h1 {
+    font: normal 700 20px 'Oxanium', sans-serif;
+  }
+
+  p {
+    font: normal 400 17px 'Oxanium', sans-serif;
+  }
+}
+
+#closepromptbutton,
+#errorclosepromptbutton {
+  width: fit-content;
+  text-align: center;
+  display: flex;
+  margin: -10px 0px -5px auto;
+  color: grey;
+  font-size: 1rem;
+}
+
+#closepromptbutton:hover {
+  color: rgb(255, 255, 255);
+}
+
+.info-container {
+  position: absolute;
+  right: 47px;
+  bottom: 490px;
+}
+
+.info-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.info-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: #632673;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: -40px;
+  left: -90px;
+  margin-left: -100px;
+  /* Adjust to center */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-container:hover .info-text {
+  visibility: visible;
+}
+
+#equals {
+  font: normal 600 1rem 'Oxanium', sans-serif;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+
+label {
+  font: normal 800 1rem 'Roboto Condensed', sans-serif;
+}
+
+.select-items {
+  border-radius: 30px;
+}
+
+#cashoutbuttoncontainer {
+  position: absolute;
+  right: 45px;
+  bottom: 25px;
+
+  #cashoutbutton {
+    width: 120px;
+    height: 58px;
+    background: rgba(255, 0, 0, 0.75);
+    border-radius: 68px;
+    font: normal 800 1rem 'Roboto Condensed', sans-serif;
+    color: #ffffff;
+  }
+}
+
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification {
+  position: relative;
+  min-width: 200px;
+  padding: 10px 15px;
+  background-color: #333;
+  color: #fff;
+  padding-right: 30px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.5s forwards, fadeOut 3s 3s forwards;
+}
+
+.notification-close {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  font-size: 1.2em;
+  color: #fff;
+  cursor: pointer;
+}
+
+.notification.error {
+  background-color: #350f3f;
+}
+
+.notification.success {
+  background-color: #350f3f;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}

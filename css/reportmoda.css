@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #reportmodal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #reportmodalcontent {
+    box-sizing: border-box;
+    width: 500px;
+    height: 535px;
+    background: rgb(0, 0, 0);
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  #reportclosebtn {
+    padding: 15px 18px;
+    width: fit-content;
+    justify-self: flex-end;
+    background: rgb(255, 255, 255, 0.3);
+    font: 700 normal 1rem "Oxanium", sans-serif;
+    text-align: right;
+    border-radius: 5px;
+  }
+  #reportclosebtn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    color: black;
+  }
+  #reportmodalheader {
+    padding: 5px;
+    margin: 3px 0px 0px 8px;
+    font: 800 normal 25px "Roboto", sans-serif;
+  }
+  #reportmodalsubheading {
+    margin: 3px 0px 0px 20px;
+    font: 400 normal 16px "Roboto", sans-serif;
+  }
+  #reportedplayerlabel {
+    font: 400 normal 16px "Roboto", sans-serif;
+    margin: 0px 0px 0px 15px;
+  }
+  #reportedplayer {
+    width: 220px;
+    height: 35px;
+  
+    padding: 3px 5px;
+    margin: 0px 0px 0px 10px;
+  
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+  
+    color: rgb(0, 0, 0);
+    font: 500 normal 16px "Oxanium", sans-serif;
+  }
+  
+  #reportreasonlabel {
+    font: 400 normal 16px "Roboto", sans-serif;
+    margin: 0px 0px 0px 15px;
+  }
+  #reportreason {
+    width: 400px;
+    height: 140px;
+    resize: none;
+  
+    margin: 8px 0px 0px 15px;
+    padding: 10px 12px;
+    background: rgb(255, 255, 255);
+    border: 2px solid rgb(128, 128, 128, 0.7);
+    border-radius: 8px;
+  
+    color: rgb(0, 0, 0);
+    font: 400 normal 14px "Oxanium", sans-serif;
+  }
+  
+  #reportsubmitbtn {
+    margin: 15px 0px 0px 15px;
+    padding: 10px 14px;
+    border-radius: 5px;
+  
+    font: 500 normal 16px "Roboto Condensed", sans-serif;
+    color: rgb(0, 0, 0);
+  
+    background: #f8e559;
+  }
+  
