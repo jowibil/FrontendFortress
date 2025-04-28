@@ -1,3 +1,30 @@
+<?php
+session_start();
+include 'database.php'; 
+
+$user_id = $_SESSION['user_id'];
+
+try {
+    $stmt = $pdo->prepare("SELECT gold FROM user_profiles WHERE user_id = ?");
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $stmt = $pdo->prepare("SELECT COUNT(*) AS locked_slots FROM quest_slots WHERE user_id = ? AND status = 'locked'");
+    $stmt->execute([$user_id]);
+    $lockedSlots = $stmt->fetch(PDO::FETCH_ASSOC)['locked_slots'];
+
+    $stmt = $pdo->prepare("SELECT users.name, user_profiles.level, user_profiles.exp, user_profiles.reward_coins, user_profiles.gold 
+                       FROM users 
+                       JOIN user_profiles ON users.id = user_profiles.user_id 
+                       WHERE users.id = ?");
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    $_SESSION['error'] = "Database error: " . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,113 +47,33 @@
   <div class="header">
     <div class="leftnav">
       <div class="prof-pic">
-        <img src="pics/profpic.png" alt="" />
+        <img src="pic/profpic.png" alt="" />
       </div>
       <div class="ign-level">
-        <span class="ign">KATARINA</span>
+        <span class="ign"><?php echo htmlspecialchars($user['name']); ?></span>
         <span class="lvl">LVL.69</span>
       </div>
       <div class="expbar">
-        <span><img src="pics/progbar.png" alt="" /></span>
+        <span><img src="pic/progbar.png" alt="" /></span>
       </div>
     </div>
     <img
-      src="pics/title.png"
+      src="pic/title.png"
       alt=""
       class="brand"
       style="width: 803px; height: 335px; top: -50px" />
     <div class="rightnav">
       <div class="home" onclick="backHome()">
-        <img src="pics/home 1.png" alt="" class="home-icon" />
-        <span id="home-text">HOME</span>
+      <a style="text-decoration: none;" href="dashboard.php"><img src="pic/home 1.png" alt="" class="home-icon" /></a>
+        <a style="text-decoration: none;" href="dashboard.php"><span id="home-text">HOME</span></a>
       </div>
       <div class="logout" onclick="   ">
-        <img src="pics/Exit.png" alt="" class="logout-icon" />
+        <img src="pic/Exit.png" alt="" class="logout-icon" />
         <span class="logout-txt">LOGOUT</span>
       </div>
     </div>
   </div>
-  <!-- body -->
-  <!-- <div id="container">
-    <img src="pics/exp coins.png" alt="" />
-    <span id="reward-coins">TRY</span>
-    <img src="pics/gold coins.png" alt="" />
-    <span id="gold-coins">TRY</span>
-  </div>
 
-  <div id="shopContainer">
-    <div id="itemContainer_1">
-      <h1>Experience Points<br />Boost</h1>
-      <div id="item-holder">
-        <img src="pics/Potion.png " alt="" />
-      </div>
-      <div class="item-price">
-        <img src="pics/gold coins.png" alt="" />
-        <span id="price">10000</span>
-      </div>
-      <button id="buyButton" onclick="showPrompt()">BUY</button>
-    </div>
-    <div id="itemContainer_2">
-      <h1>Quest Slot</h1>
-      <div id="item-holder"></div>
-      <div class="item-price">
-        <img src="pics/gold coins.png" alt="" />
-        <span id="price">10000</span>
-      </div>
-      <button id="buyButton" onclick="unlockSlot()">BUY</button>
-    </div>
-    <div id="bodyContainer">
-      <div id="convertContainer">
-        <h3>Convert</h3>
-        <div id="RewardCoinsCointainer">
-          <img src="pics/exp coins.png" alt="" />
-          <input
-            type="text"
-            inputmode="numeric"
-            name="rewardcoinsAmount"
-            id="rewardcoinsAmount"
-            maxlength="9" />
-        </div>
-        <div id="GoldCoinsContainer">
-          <img src="pics/gold coins.png" alt="" />
-          <span
-            name="goldcoinsAmount"
-            id="goldcoinsAmount"
-            maxlength="9"></span>
-        </div>
-        <br />
-        <p id="conversionstatus"></p>
-        <div id="conversionbuttonscontainer">
-          <button id="resetconversion" onclick="convertreset()">RESET</button>
-          <button id="convertbutton" onclick="convertsuccess()">
-            CONVERT
-          </button>
-        </div>
-      </div>
-      <div id="cashoutContainer">
-        <h3>CASHOUT</h3>
-        <p id="cashoutparagraph">Enter the amount you wish to cashout.</p>
-        <p id="cashoutparagraph">10 Gold ≈ PHP 10</p>
-        <div id="cashoutamountcontainer">
-          <img src="pics/gold coins.png" alt="" />
-          <input
-            type="text"
-            inputmode="numeric"
-            name="cashoutamount"
-            id="cashoutamount"
-            maxlength="9" />
-        </div>
-        <br />
-        <p id="cashoutstatus"></p>
-        <div id="cashoutbuttoncontainer">
-          <button id="cashoutbutton" onclick="cashoutRequest()">
-            CASHOUT
-          </button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- Shop Body -->
   <div id="container">
   </div>
 
@@ -134,10 +81,10 @@
     <div id="itemContainer_1">
       <h1>Experience Points<br>Bomb</h1>
       <div id="item-holder">
-        <img src="pics/Potion.png" alt="" class="Potions">
+        <img src="pic/Potion.png" alt="" class="Potions">
       </div>
       <div class="item-price">
-        <img src="pics/gold coins.png" alt="" class="gold-coins">
+        <img src="pic/gold coins.png" alt="" class="gold-coins">
         <span id="price">70</span>
       </div>
       <form action="" method="POST">
@@ -150,15 +97,18 @@
 
       </div>
       <div class="item-price">
-        <img src="pics/gold coins.png" alt="" class="gold-coins">
+        <img src="pic/gold coins.png" alt="" class="gold-coins">
         <span id="price">100</span>
       </div>
       <div class="shop-slots">
-        <form method="POST" action="">
+        <?php if ($lockedSlots > 0): ?>
+        <form action="unlock_slot.php" method="POST">
           <input type="hidden" name="task_id" value="">
           <button id="buyButton" type="submit">Unlock Slot</button>
+          <?php else: ?>
+            <p style="margin-top: 17px;" class="text-success">All quest slots are unlocked!</p>
+          <?php endif; ?>
         </form>
-        <p>All slots are unlocked.</p>
       </div>
     </div>
     <div id="bodyContainer">
@@ -169,8 +119,8 @@
             <input type="number" inputmode="numeric" name="rewardcoins" min="1" required id="rewardcoinsAmount">
         </div>
         <div id="GoldCoinsContainer">
-          <img src="pics/exp coins.png" alt="" class="ConverterPic"><span class="convertervalue" id="price">1000</span><span id="equals">=</span>
-          <img src="pucs/gold coins.png" alt="" class="ConverterPic"><span class="convertervalue" id="goldcon">1</span></span>
+          <img src="pic/exp coins.png" alt="" class="ConverterPic"><span class="convertervalue" id="price">1000</span><span id="equals">=</span>
+          <img src="puc/gold coins.png" alt="" class="ConverterPic"><span class="convertervalue" id="goldcon">1</span></span>
         </div>
         <br>
         <p id="conversionstatus"></p>

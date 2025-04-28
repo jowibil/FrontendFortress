@@ -432,3 +432,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.rightsectioncontent{
+  display: flex;
+  flex-direction: row;
+}

@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['logged_in'] = true;
 
             $_SESSION['success'] = "Login successful.";
-            header("Location: dashboard.php"); // Redirect to dashboard after successful login
+            header("Location: homepage.php"); // Redirect to dashboard after successful login
             exit();
         } else {
             $_SESSION['error'] = "Invalid email or password"; // Error if credentials do not match

@@ -1,3 +1,58 @@
+<?php
+session_start();
+include 'database.php'; // Ensure this file contains the PDO connection as $pdo
+
+// Redirect if not logged in
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id']; // Get the logged-in user's ID
+
+// Fetch user profile data
+try {
+    $stmt = $pdo->prepare("SELECT users.name, user_profiles.level, user_profiles.exp, user_profiles.reward_coins, user_profiles.gold 
+                           FROM users 
+                           JOIN user_profiles ON users.id = user_profiles.user_id 
+                           WHERE users.id = ?");
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$user) {
+        $_SESSION['error'] = "User profile not found.";
+        header("Location: login.php");
+        exit();
+    }
+} catch (PDOException $e) {
+    $_SESSION['error'] = "Database error: " . $e->getMessage();
+    header("Location: login.php");
+    exit();
+}
+
+// Fetch all quests
+$quests = [];
+try {
+$stmt = $pdo->query("SELECT quests.id, quests.title, quests.short_description, quests.full_description, quests.difficulty, quests.user_id, users.name AS posted_by 
+                     FROM quests 
+                     JOIN users ON quests.user_id = users.id 
+                     ORDER BY quests.created_at DESC");
+    $quests = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    $_SESSION['error'] = "Database error: " . $e->getMessage();
+}
+
+// Fetch quest slots
+$slots = [];
+try {
+    $stmt = $pdo->prepare("SELECT slot_number, quest_title, status FROM quest_slots WHERE user_id = ? ORDER BY slot_number ASC");
+    $stmt->execute([$user_id]);
+    $slots = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    $_SESSION['error'] = "Database error: " . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 
 <body lang="en">
@@ -6,10 +61,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Homepage</title>
-        <link rel="stylesheet" href="css/homepage.css">
+        <link rel="stylesheet" href="css/das.css">
         <link rel="stylesheet" href="css/modal.css">
-        <link rel="stylesheet" href="css/postmodal.css">
-        <link rel="stylesheet" href="css/reportmodal.css">
+        <link rel="stylesheet" href="css/postmoda.css">
+        <link rel="stylesheet" href="css/reportmoda.css">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
             @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oxanium:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
@@ -23,31 +78,31 @@
         <div class="header">
             <div class="leftnav">
                 <div class="prof-pic">
-                    <img src="pics/profpic.png" alt="">
+                    <img src="pic/profpic.png" alt="">
                 </div>
                 <div class="ign-level">
-                    <span class="ign">KATARINA</span>
-                    <span class="lvl">LVL.69</span>
+                    <span class="ign"><?php echo htmlspecialchars($user['name']); ?></span>
+                    <span class="lvl">LVL <?php echo $user['level']; ?></span>
                 </div>
                 <div class="expbar">
-                    <span><img src="pics/progbar.png" alt=""></span>
+                    <span><img src="pic/progbar.png" alt=""></span>
                 </div>
             </div>
-            <img src="pics/title.png" alt="" class="brand">
+            <img src="pic/title.png" alt="" class="brand">
             <div class="rightnav">
                 <div class="currency">
-                    <img src="pics/exp coins.png" alt="" class="exp-coins">
-                    <span class="exp-amnt">900000</span>
-                    <img src="pics/gold coins.png" alt="" class="gold-coins">
-                    <span class="gold-amnt">10000</span>
+                    <img src="pic/exp coins.png" alt="" class="exp-coins">
+                    <span class="exp-amnt"><?php echo $user['reward_coins'] !== null ? $user['reward_coins'] : 0; ?></span>
+                    <img src="pic/gold coins.png" alt="" class="gold-coins">
+                    <span class="gold-amnt"><?php echo $user['gold']; ?></span>
                 </div>
                 <div id="report">
-                    <img src="pics/Warning.png" alt="">
+                    <img src="pic/Warning.png" alt="">
                     <p>Report</p>
                 </div>
                 <div class="logout">
-                    <img src="pics/Exit.png" alt="" class="logout-icon">
-                    <span class="logout-txt">LOGOUT</span>
+                    <a href="logout.php"><img src="pic/Exit.png" alt="" class="logout-icon"></a>
+                    <a style="text-decoration: none;" href="logout.php"><span class="logout-txt">LOGOUT</span></a>
                 </div>
             </div>
         </div>
@@ -59,24 +114,20 @@
         <div class="body-container">
             <div class="leftside-container">
                 <div class="left-title">PENDING TASKS</div>
+                <?php foreach ($slots as $slot): ?>
                 <div class="task-cont" id="task-cont">
                     <!-- 1st slot open -->
                     <div class="slot-1"><img src="" alt="">
-                        <h3></h3>
-                    </div>
-                    <div class="slot-2 locked"><img src="/FINALWEB/pics/Lock.png" alt="">
-                        <h3></h3>
-                    </div>
-                    <div class="slot-3 locked"><img src="/FINALWEB/pics/Lock.png" alt="">
-                        <h3></h3>
-                    </div>
-                    <div class="slot-4 locked"><img src="/FINALWEB/pics/Lock.png" alt="">
-                        <h3></h3>
-                    </div>
-                    <div class="slot-5 locked"><img src="/FINALWEB/pics/Lock.png" alt="">
-                        <h3></h3>
+                        <?php if ($slot['status'] === 'available' && empty($slot['quest_title'])): ?>
+                            <span class="text-success"></span>
+                        <?php elseif ($slot['status'] === 'occupied'): ?>
+                            <h3><?php echo htmlspecialchars($slot['quest_title']); ?></h3>
+                        <?php else: ?>
+                            <span class="text-danger"><img src="pic/Lock.png" alt=""></span>
+                        <?php endif; ?>
                     </div>
                 </div>
+                <?php endforeach; ?>
             </div>
 
             <div class="middle-container">
@@ -84,22 +135,26 @@
                     <div class="quest-title">QUEST CARDS</div>
                     <div class="quests-bg">
                         <div class="carousel" id="card-carousel">
+                            <?php foreach ($quests as $quest): ?>
                             <div class="card">
                                 <div class="card-image">
                                     <div class="quest-price">
-                                        <img src="pics/exp coins.png" alt="">
-                                        <span id="price">10000</span>
+                                        <img src="pic/exp coins.png" alt="">
+                                        <span id="price"><?php echo htmlspecialchars($quest['difficulty']); ?></span>
                                     </div>
-                                    <img src="pics/bbg.jpg" alt="" id="image-holder">
+                                    <img src="pic/bbg.jpg" alt="" id="image-holder">
                                 </div>
                                 <div class="card-desc">
-                                    <p class="card-description">Make a landing page for a shoe shop</p>
-                                    <div class="cardbtn" id="card-btn">Learn More>></div>
+                                    <p class="card-description"><?php echo htmlspecialchars($quest['short_description']); ?></p>
                                 </div>
+                                <button class="cardbtn" id="card-btn" onclick="openModal('<?php echo $quest['id']; ?>')">More Info</button>
                             </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
-                    <button id="post-quest" onclick="openModal()">POST QUEST</button>
+                    <div class="new-quest-card">
+                        <button class="custom-btn" onclick="openQuestModal()">New Quest</button>
+                    </div>
                 </div>
             </div>
 
@@ -110,12 +165,12 @@
             <div class="rightside-container">
                 <div class="btns">
                     <div class="btn">
-                        <img src="pics/inbox.png" alt="">
+                        <img src="pic/inbox.png" alt="">
                         <span>INBOX</span>
                     </div>
-                    <div class="btn" onclick="openShop()">
-                        <img src="pics/shopping cart.png" alt="">
-                        <span>SHOP</span>
+                    <div class="btn">
+                        <a href="shop.php"><img src="pic/shopping cart.png" alt=""></a>
+                        <a style="text-decoration: none;" href="shop.php"><span>SHOP</span></a>
                     </div>
                 </div>
                 <div class="leadboards">
@@ -129,53 +184,55 @@
 
     </body>
 
-    <!-- modal na mu show pag pisliton ang post quest na button -->
-    <div id="post-modal">
-        <div class="postmodal-content">
-            <div class="header-bg">
-                <h1>POST A QUEST</h1>
+    <!-- Add it here -->
+        <div id="questModalContainer" class="custom-modal">
+        <div class="custom-modal-content">
+            <div class="custom-modal-header">
+
+                <p class="creat">Create a Quest</p>
             </div>
-            <div class="title-cont">
-                <h3>QUEST TITLE</h3>
-                <input type="text" name="postquest_title" id="postquest_title" maxlength="40" minlength="3" required
-                    placeholder="Your Title">
-            </div>
-            <div class="details-cont">
-                <h3>QUEST DETAILS</h3>
-                <textarea name="postquest_details" id="postquest_details" required
-                    placeholder="Your Quest details here..."></textarea>
-            </div>
-            <div class="bottom-cont">
-                <div class="carddesc-cont">
-                    <h3>CARD DESCRIPTION</h3>
-                    <textarea name="carddescription" id="carddescription" required
-                        placeholder="Description to be shown in the quest card" oninput="limitLines()"
-                        maxlength="100"></textarea>
-                    <p id="lineLimitMessage" style="color: red; display: none;">Line limit reached!</p>
-                </div>
-                <div class="reward-cont">
-                    <div id="rc-cont">
-                        <img src="pics\exp coins.png" alt="">
-                        <span id="rc-label">REWARDS COINS</span>
+            <div class="custom-modal-body">
+                <form action="post_quest.php" method="POST">
+                    <div class="cont">
+                        <div class="post-left">
+                            <div class="custom-form-group1">
+                                <label class="lab" for="questTitle">Quest Title</label>
+                                <input class="tit" type="text" id="questTitle" name="title" required>
+                            </div>
+                            <div class="custom-form-group1">
+                                <label class="lab" for="questFullDesc">Full Description</label>
+                                <textarea class="ful-desc" id="questFullDesc" name="full_description" rows="3" required></textarea>
+                            </div>
+                        </div>                 
+
+                        <div class="post-right">            
+                            <div class="custom-form-group2">
+                                <label class="lab" for="questShortDesc">Short Description</label>
+                                <textarea class="short-desc" type="text" id="questShortDesc" name="short_description" required></textarea>
+                            </div>
+                            <div class="custom-form-group3">
+                                <label class="lab" for="questDifficulty">Difficulty</label>
+                                <select id="questDifficulty" name="difficulty" required>
+                                    <option value="Easy">Easy</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Hard">Hard</option>
+                                </select>
+                            </div>
+                            <div class="post-buttons">
+                                <button onclick="closeQuestModal()" class="closer">CANCEL</button>
+                                <button type="submit">POST</button>
+                            </div>
+                        </div>
                     </div>
-                    <p>Choose Difficulty:</p>
-                    <select id="dropdown" name="options" onchange="updateCoinEquivalent()">
-                        <option value="option1">Easy</option>
-                        <option value="option2">Medium</option>
-                        <option value="option3">Hard</option>
-                    </select>
-                    <p id="RCE">Coin Equivalent: <span id="rc_equivalent"></span></p>
-                </div>
-            </div>
-            <div class="postbtn-cont">
-                <button id="close" onclick="closeModal()">CLOSE</button>
-                <button id="create_quest">POST</button>
+                </form>
             </div>
         </div>
     </div>
 
+
     <!-- quest modal -->
-    <div id="questModal" class="modal" style="display: none;">
+    <?php foreach ($quests as $quest): ?>
+    <div id="questModal<?php echo $quest['id']; ?>" tabindex="-1" aria-labelledby="questModalLabel" aria-hidden="true" class="modal" style="display: none;">
         <div class="modal-content">
             <div id="content-left">
                 <div id="commentModalContent">
@@ -191,10 +248,10 @@
             <div id="content-rightt">
                 <div class="quest_title">
                     <div class="user">
-                        <img src="pics/profpic.png" alt="">
+                        <img src="pic/profpic.png" alt="">
                         <p><span id="modal-posted-by"></span></p>
                     </div>
-                    <h2 id="modal-title" class="title" data-title="{{ $quest->title }}"></h2>
+                    <h2 id="modal-title" class="title" data-title="{{ $quest->title }}"><?php echo htmlspecialchars($quest['title']); ?></h2>
                 </div>
 
 
@@ -202,7 +259,7 @@
                 <div class="description-container">
                     <div class="disc_box">
                         <h2 class="discription">DESCRIPTION</h2>
-                        <div id="modal-description"></div>
+                        <div id="modal-description"><?php echo nl2br(htmlspecialchars($quest['full_description'])); ?></div>
                     </div>
                 </div>
                 <div id="bottomSection">
@@ -215,7 +272,7 @@
                             <form action='' method="POST" id="commentForm">
 
                                 <div class="player-profile" style="display: none">
-                                    <img src="pics/profpic.png" alt="">
+                                    <img src="pic/profpic.png" alt="">
                                     <span class="player-ign"> KATARINA </span>
                                     <span name="quest_title" id="modal-title" value=""></span>
                                     <input type="hidden" name="quest_id" id="modal-id" value="">
@@ -232,18 +289,27 @@
                     <div id="rightsection">
                         <div class="rightsectioncontent">
                             <div class="quest-pay">
-                                <img src="pics/exp coins.png" alt="" class="exp-coins">
-                                <span class="PriceAmount" id="modal-reward-coins"></span>
+                                <img src="pic/exp coins.png" alt="" class="exp-coins">
+                                <span class="PriceAmount" id="modal-reward-coins"><?php echo htmlspecialchars($quest['difficulty']); ?></span>
                             </div>
-                            <button id="back-btn" class="close">BACK</button>
-                            <button
-                                type="button"
-                                class="btn btn-primary accept-quest-btn"
-                                id="accept-btn"
-                                data-id=""
-                                data-title="">
-                                ACCEPT
-                            </button>
+                            <div class="accept">
+                                <button id="back-btn" type="button" class="close" onclick="closeModal('<?php echo $quest['id']; ?>')">BACK</button>
+
+                                <?php if ($quest['user_id'] == $user_id): ?>
+                                    <form action="delete_quest.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this quest?');">
+                                        <input type="hidden" name="quest_id" value="<?php echo $quest['id']; ?>">
+                                        <button type="submit" class="btn btn-danger" id="delete-btn">DELETE</button>
+                                    </form>
+                                <?php else: ?>
+                                    <!-- Show ACCEPT button for others -->
+                                    <form action="accept_quest.php" method="POST">
+                                        <input type="hidden" name="quest_id" value="<?php echo $quest['id']; ?>">
+                                        <button type="submit" class="btn btn-primary accept-quest-btn" id="accept-btn">ACCEPT</button>
+                                    </form>
+                                <?php endif; ?>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -252,6 +318,7 @@
         <p style="display: none"><strong>Difficulty:</strong> <span id="modal-difficulty"></span></p>
         <p style="display: none"><strong>Experience Points:</strong> <span id="modal-exp"></span></p>
     </div>
+    <?php endforeach; ?>
 
     <div id="reportmodal">
         <div id="reportmodalcontent">
@@ -272,65 +339,43 @@
         </div>
     </div>
 
-
-
-
-
-
     <script>
-        // limit line sa description sa card 
-        function limitLines() {
-            const textarea = document.getElementById("carddescription");
-            const message = document.getElementById("lineLimitMessage");
-            const maxLines = 5;
-            const lines = textarea.value.split("\n");
-
-            if (lines.length > maxLines) {
-                textarea.value = lines.slice(0, maxLines).join("\n");
-                message.style.display = "block";
-            } else {
-                message.style.display = "none";
+        function closeModal(questId) {
+            let modal = document.getElementById("questModal" + questId);
+            if (modal) {
+                modal.style.display = "none";
             }
         }
 
-        function openShop() {
-            window.location.href = "shop.php";
-        }
-
-        function updateCoinEquivalent() {
-            const dropdown = document.getElementById("dropdown");
-            const rcEquivalent = document.getElementById("rc_equivalent");
-
-            // Set coin equivalents based on the selected option
-            const coinValues = {
-                option1: 5000, // Easy
-                option2: 10000, // Medium
-                option3: 15000 // Hard
-            };
-            // Update the display based on the selected value
-            rcEquivalent.textContent = coinValues[dropdown.value] || 0;
-        }
-
-
-        //function para sa learn more button — para ma abri ang QuestModal
-        const Questmodal = document.getElementById("questModal");
-        const openQuestModalBtn = document.getElementById("card-btn");
-        const closeQuestBtn = document.getElementById("back-btn");
-        openQuestModalBtn.onclick = function() {
-            Questmodal.style.display = "flex";
-        }
-
-        closeQuestBtn.onclick = function() {
-            Questmodal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                Questmodal.style.display = "none";
+        function openModal(questId) {
+            let modal = document.getElementById("questModal" + questId);
+            if (modal) {
+                modal.style.display = "block";
             }
         }
     </script>
-    <script src="javascript/homepage.js"></script>
-    <script src="javascript/shop.js"></script>
+
+    <script>
+        // Function to open the modal
+        function openQuestModal() {
+            document.getElementById("questModalContainer").style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeQuestModal() {
+            document.getElementById("questModalContainer").style.display = "none";
+        }
+
+        // Close modal if the user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("questModalContainer")) {
+                closeQuestModal();
+            }
+        };
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 
     </html>

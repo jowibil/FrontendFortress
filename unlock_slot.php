@@ -35,6 +35,6 @@ $stmt = $pdo->prepare("UPDATE user_profiles SET gold = gold - ? WHERE user_id = 
 $stmt->execute([$cost, $user_id]);
 
 $_SESSION['success'] = "Slot unlocked!";
-header("Location: dashboard.php");
+header("Location: homepage.php");
 exit();
 ?>

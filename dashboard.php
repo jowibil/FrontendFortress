@@ -60,6 +60,38 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .quest-container {
+            display: flex;
+            flex-direction: row; /* Ensures scrolling starts from the right */
+            overflow-x: auto;
+            gap: 16px;
+            padding-bottom: 10px;
+            white-space: nowrap;
+            scrollbar-width: thin;
+            scrollbar-color: #ccc transparent;
+            width: 100px;
+        }
+
+        .quest-card {
+            min-width: 250px; /* Adjust the width based on your preference */
+            flex: 0 0 auto;
+        }
+
+        /* Optional: Styling for Webkit-based browsers */
+        .quest-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .quest-container::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+
+        .quest-container::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-4">
@@ -70,16 +102,16 @@ try {
         <p><strong>Gold:</strong> <?php echo $user['gold']; ?></p>
         
         <a href="logout.php" class="btn btn-danger">Logout</a>
-        <a href="shope.php" class="btn btn-warning ms-3">Go to Shop</a>
+        <a href="shop.php" class="btn btn-warning ms-3">Go to Shop</a>
         <button class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#postQuestModal">Post a Quest</button>
 
         <hr>
 
         <!-- Quest Slots Section -->
-        <h3>Your Quest Slots</h3>
-        <div class="d-flex">
+        <h3 class="quest-slots-title">PENDING TASKS</h3>
+        <div class="quest-slots-container">
             <?php foreach ($slots as $slot): ?>
-                <div class="p-2 m-2 border rounded text-center" style="width: 120px;">
+                <div class="quest-slot">
                     <?php if ($slot['status'] === 'available' && empty($slot['quest_title'])): ?>
                         <span class="text-success">✔️ Available</span>
                     <?php elseif ($slot['status'] === 'occupied'): ?>
@@ -91,48 +123,48 @@ try {
             <?php endforeach; ?>
         </div>
 
+
         <hr>
 
-        <!-- Display Quests -->
         <h2>All Quests</h2>
-        <div class="row">
+        <div class="quest-container">
             <?php foreach ($quests as $quest): ?>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo htmlspecialchars($quest['title']); ?></h5>
-                            <p class="card-text"><?php echo htmlspecialchars($quest['short_description']); ?></p>
-                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#questModal<?php echo $quest['id']; ?>">More Info</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quest Modal -->
-                <div class="modal fade" id="questModal<?php echo $quest['id']; ?>" tabindex="-1" aria-labelledby="questModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title"><?php echo htmlspecialchars($quest['title']); ?></h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p><strong>Posted by:</strong> <?php echo htmlspecialchars($quest['posted_by']); ?></p>
-                                <p><strong>Description:</strong> <?php echo nl2br(htmlspecialchars($quest['full_description'])); ?></p>
-                                <p><strong>Difficulty:</strong> <?php echo htmlspecialchars($quest['difficulty']); ?></p>
-                            </div>
-                            <div class="modal-footer">
-                                <form action="accept_quest.php" method="POST">
-                                    <input type="hidden" name="quest_id" value="<?php echo $quest['id']; ?>">
-                                    <button type="submit" class="btn btn-success">Accept Quest</button>
-                                </form>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
+                <div class="card quest-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo htmlspecialchars($quest['title']); ?></h5>
+                        <p class="card-text"><?php echo htmlspecialchars($quest['short_description']); ?></p>
+                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#questModal<?php echo $quest['id']; ?>">More Info</button>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-    </div>
+
+                <?php foreach ($quests as $quest): ?>
+            <!-- Quest Modal -->
+            <div class="modal fade" id="questModal<?php echo $quest['id']; ?>" tabindex="-1" aria-labelledby="questModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"><?php echo htmlspecialchars($quest['title']); ?></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Posted by:</strong> <?php echo htmlspecialchars($quest['posted_by']); ?></p>
+                            <p><strong>Description:</strong> <?php echo nl2br(htmlspecialchars($quest['full_description'])); ?></p>
+                            <p><strong>Difficulty:</strong> <?php echo htmlspecialchars($quest['difficulty']); ?></p>
+                        </div>
+                        <div class="modal-footer">
+                            <form action="accept_quest.php" method="POST">
+                                <input type="hidden" name="quest_id" value="<?php echo $quest['id']; ?>">
+                                <button type="submit" class="btn btn-success">Accept Quest</button>
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?> <!-- This is the correct endforeach -->
+        </div> <!-- This closing div is incorrectly placed -->
 
     <!-- Post a Quest Modal -->
 <div class="modal fade" id="postQuestModal" tabindex="-1" aria-labelledby="postQuestModalLabel" aria-hidden="true">
