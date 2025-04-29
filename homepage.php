@@ -166,7 +166,7 @@ try {
                 <div class="btns">
                     <div class="btn" onclick="openInbox()">
                         <img src="pic/inbox.png" alt="">
-                        <span>INBOX</span>
+                        <span>SUBMISSIONS</span>
                     </div>
                     <div class="btn" onclick="openShop()">
                         <img src="pic/shopping cart.png" alt="">

@@ -2,7 +2,7 @@ function showContent(option) {
   const rightPane = document.getElementById("right-pane");
   rightPane.innerHTML = "";
 
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 5; i++) { //loop sa generated card
     const card = document.createElement("div");
     card.className = "card";
 
