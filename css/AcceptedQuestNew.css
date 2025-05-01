@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(180deg, #000000, #490b80, #555555);
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* navbar css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+
+}
+
+.navbar h3 {
+    font: 500 normal 2rem "Oxanium", sans-serif;
+}
+
+#navbtn {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+    font: 400 normal 1rem 'Oxanium', sans-serif;
+    margin: 0px 130px 0px 0px;
+}
+
+#homebtn,
+#logoutbtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+
+}
+
+#homebtn img,
+#logoutbtn img {
+    height: auto;
+    width: 50px;
+}
+
+/* css for parent div */
+.parent {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+/* css for body div */
+.body {
+    width: 80%;
+    height: 80vh;
+
+    background: rgba(255, 255, 255, 0.2);
+    margin: 20px 0px 0px 0px;
+
+    border-radius: 30px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+/* css for title  */
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    align-self: center;
+
+    height: 120px;
+    width: 600px;
+
+    margin: 0 auto;
+
+    border-bottom: 2px solid rgb(255, 255, 255);
+
+}
+
+.title h3 {
+    font: 600 normal 2rem "Oxanium", sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+.detail-container {
+    display: flex;
+    width: 100%;
+
+}
+
+/*css for quest details */
+.details {
+    height: 68vh;
+    width: 65%;
+
+    white-space: pre-wrap;
+    padding: 5px;
+    
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    font: 400 normal 16px "Oxanium", sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+/*css for file submission */
+.filesubmit {
+    height: 68vh;
+    width: 35%;
+}
+
+.filesubmit h3 {
+    font: 600 normal 1rem "Inter", sans-serif;
+    color: rgb(255, 255, 255);
+
+    text-align: center;
+}
+
+#drop-area {
+    margin: 20vh auto 10px auto;
+    border: 2px dashed rgb(255, 255, 255);
+    padding: 20px 20px;
+    text-align: center;
+    background-color: #556B2F;
+    cursor: pointer;
+    width: 90px;
+}
+
+#drop-area.dragover {
+    border-color: #ff0000;
+    color: #ffffff;
+}
+
+
+#file-list {
+    width: 300px;
+    margin: 0 auto;
+}
+
+#file-list ul li {
+    color: rgb(255, 255, 255);
+}
